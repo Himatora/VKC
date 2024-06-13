@@ -1,0 +1,182 @@
+@startuml
+'https://plantuml.com/class-diagram
+class main{
++main(String[] args)
+}
+class SaveRes{
+-PATH_TO_DB_FILE: String
+-URL: String
+-connection: Connection
++add(String type, float result)
++getAllStats():List<StatsTable>
+}
+class GeneratePerson{
+-PATH_TO_DB_FILE: String
+-URL: String
+-connection: Connection
+-genderIdG:int
+-typeIdG:int
++getGender():int
++getName():String
++getMiddlename():String
++getLastname():String
++getRegistration():String
++getRegion():String
++getTerm():String
++getAge():String
++getDisability():String
++getEmployments():String
++getTypeEmployments():String
++getWorkExperience():String
++getCity():String
++randomIdProb(int max,int[] probabilities):int
++randomId(int max):int
+}
+class Stats extends JFrame{
+-statsTableModel:StatsTableModel
+-menu:JButton
+-stats:JTable
++init()
+}
+class StatsTableModel extends AbstractTableModel{
+-data:List<StatsTable>
++getRowCount():int
++getColumnCount():int
++getValueAt(int rowIndex, int columnIndex):Object
++getColumnName(int column):String
+}
+class Analysis extends JFrame{
+-save_res:JButton
+-exit:JButton
+-registration:JButton
+-disabilities:JButton
+-employments:JButton
+-type_employments:JButton
+-work_experience:JButton
+-age:JButton
+-material:JPanel
+-manage:JPanel
+-label:JLabel
++init(Map<String, Integer> res, int all, int score,String type)
+}
+class Article extends JFrame{
+-dc:JButton
+-dco:JButton
+-halva:JButton
+-halva0:JButton
+-halvad:JButton
+-vcd:JButton
+-material:JPanel
++init()
+}
+class BarChartExample extends JPanel{
+-res:Map<String, Integer>
+-all:int
++paintComponent(Graphics g)
++getPreferredSize():Dimension
+}
+class ChooseProduct{
+-PATH_TO_DB_FILE: String
+-URL: String
+-connection: Connection
++checkingStr(ResultSet resultSet, String name, JCheckBox checkbox, String currCond):int
++checkingTerm(ResultSet resultSet, String name, JCheckBox checkbox, String currCond, String secondCond):int
++checkingAge(ResultSet resultSet, String name, JCheckBox checkbox, String currCond):int
++checkRegistrationAndDisabilities (JCheckBox checkbox, Person person):Map<String, Integer>
+}
+class MainWindow extends JFrame{
+-menu:JPanel
+-newSpec:JButton
+-experSpec:JButton
+-stats:JButton
+-article:JButton
+-menuName:Label
+-res:Map<String, Integer>
++init()
+}
+class Material extends JFrame{
++init(JLabel label)
+}
+class NewSpec extends JFrame{
+-flag:Boolean
+-chose:Boolean
+-product:JPanel
+-task:JPanel
+-vcd:JCheckBox
+-dc:JCheckBox
+-pza:JCheckBox
+-pzn:JCheckBox
+-dcO:JCheckBox
+-pzaO:JCheckBox
+-pznO:JCheckBox
+-halva:JCheckBox
+-halva0:JCheckBox
+-debetH:JCheckBox
+-inf:JLabel
+-scoreL:JLabel
+-check:JButton
+-next:JButton
+-manage:JPanel
+-exit:JButton
+-timer:Timer
++init(String type,int number, int score ,Map<String, Integer> res)
+}
+class Person{
+-gender:int
+-name:String
+-lastName:String
+-fatherName:String
+-registration:String
+-region:String
+-term:String
+-age:String
+-disability:String
+-employment:String
+-typeEmployment:String
+-workExperience:String
+-city:String
++getGender():int
++getName()::String
++getLastName():String
++getFatherName():String
++getRegistration():String
++getRegion():String
++getTerm():String
++getAge():String
++getDisability():String
++getEmployment():String
++getTypeEmployment():String
++getWorkExperience():String
++getCity():String
+}
+class StatsTable{
+-id:int
+-type:String
+-result:String
++getId():int
++setId(int id)
++getType():String
++getResult():String
++setType(String type)
++setResult(String result)
+}
+main<--MainWindow
+MainWindow<--newSpec
+MainWindow<--Stats
+MainWindow<--Article
+newSpec<--GeneratePerson
+newSpec<--Person
+newSpec<--Analysis
+newSpec<--ChooseProduct
+Stats<--StatsTableModel
+Stats<--MainWindow
+Article<--Material
+Analysis<--Material
+Analysis<--MainWindow
+Analysis<--BarChartExample
+Analysis<--SaveRes
+SaveRes<--StatsTable
+
+
+
+@enduml
