@@ -32,7 +32,7 @@ public class SaveRes {
             statement.execute();
             statement.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);//
         }
     }
     public static List<StatsTable> getAllStats() throws SQLException {
